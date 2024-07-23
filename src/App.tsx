@@ -44,14 +44,14 @@ function App() {
   const movePlayer = (axis: string, direction: number) => {
     if (axis == 'x') {
       if (
-        test[playerPos[0] + direction][playerPos[1]] == 0 &&
+        test[playerPos[0] + direction][playerPos[1]] != 1 &&
         test[playerPos[0] + direction][playerPos[1]] != undefined
       ) {
         setPlayerPos([playerPos[0] + direction, playerPos[1]]);
       }
     } else {
       if (
-        test[playerPos[0]][playerPos[1] + direction] == 0 &&
+        test[playerPos[0]][playerPos[1] + direction] != 1 &&
         test[playerPos[0]][playerPos[1] + direction] != undefined
       ) {
         setPlayerPos([playerPos[0], playerPos[1] + direction]);
