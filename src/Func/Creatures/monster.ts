@@ -1,6 +1,54 @@
 //@ts-nocheck
 
-export class Monster {
+import { chooseRarity } from '../chooseRarity';
+
+const monterProbabilities = [0.5, 0.3, 0.14, 0.06];
+
+const randomMonster = (monsterArray: []) => {
+  const monster = monsterArray[Math.floor(Math.random() * monsterArray.length)];
+  return monster;
+};
+
+export const chooseMonster = (playerLvl: number, difficultyMod: number) => {
+  const monsterProb = chooseRarity(monterProbabilities);
+  let avaiableMonsters = [];
+  let monster;
+  let chosenMonster;
+
+  switch (monsterProb) {
+    case 1:
+      avaiableMonsters = [Troll, Bugbear, Owlbear];
+      monster = randomMonster(avaiableMonsters);
+
+      return (chosenMonster = new monster(playerLvl, difficultyMod));
+      break;
+
+    case 2:
+      avaiableMonsters = [Golem, Ghoul, Warg];
+      monster = randomMonster(avaiableMonsters);
+
+      return (chosenMonster = new monster(playerLvl, difficultyMod));
+      break;
+
+    case 3:
+      avaiableMonsters = [Lich, AbyssalChicken];
+      monster = randomMonster(avaiableMonsters);
+
+      return (chosenMonster = new monster(playerLvl, difficultyMod));
+      break;
+
+    default:
+      avaiableMonsters = [Goblin, Wolf, Thug, Orc];
+      monster = randomMonster(avaiableMonsters);
+
+      return (chosenMonster = new monster(playerLvl, difficultyMod));
+      break;
+  }
+};
+
+//fazer um switch case que escolhe um monstro com base no resultado do index
+
+class Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     this.str = Math.ceil((Math.random() * 2 + _playerLvl) * _difficultyMod);
     this.con = Math.ceil((Math.random() * 2 + _playerLvl) * _difficultyMod);
@@ -20,7 +68,7 @@ export class Monster {
   }
 }
 
-export class Goblin extends Monster {
+class Goblin extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -31,7 +79,7 @@ export class Goblin extends Monster {
   }
 }
 
-export class Wolf extends Monster {
+class Wolf extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -42,7 +90,7 @@ export class Wolf extends Monster {
   }
 }
 
-export class Thug extends Monster {
+class Thug extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -53,7 +101,7 @@ export class Thug extends Monster {
   }
 }
 
-export class Orc extends Monster {
+class Orc extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -65,7 +113,7 @@ export class Orc extends Monster {
   }
 }
 
-export class Troll extends Monster {
+class Troll extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -76,7 +124,7 @@ export class Troll extends Monster {
   }
 }
 
-export class Bugbear extends Monster {
+class Bugbear extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -87,7 +135,7 @@ export class Bugbear extends Monster {
   }
 }
 
-export class Owlbear extends Monster {
+class Owlbear extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -99,7 +147,7 @@ export class Owlbear extends Monster {
   }
 }
 
-export class Golem extends Monster {
+class Golem extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -113,7 +161,7 @@ export class Golem extends Monster {
   }
 }
 
-export class Ghoul extends Monster {
+class Ghoul extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -125,7 +173,7 @@ export class Ghoul extends Monster {
   }
 }
 
-export class Warg extends Monster {
+class Warg extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -137,7 +185,7 @@ export class Warg extends Monster {
   }
 }
 
-export class Lich extends Monster {
+class Lich extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 
@@ -149,7 +197,7 @@ export class Lich extends Monster {
   }
 }
 
-export class AbyssalChicken extends Monster {
+class AbyssalChicken extends Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     super(_playerLvl, _difficultyMod);
 

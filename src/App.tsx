@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { Goblin, Monster } from './Func/Creatures/monster';
+import { chooseMonster } from './Func/Creatures/monster';
 
 function App() {
   const dungeon = [
@@ -24,8 +24,9 @@ function App() {
   const test = dungeon;
   const [playerPos, setPlayerPos] = useState(initialPos);
 
-  let monster1 = new Goblin(1, 2);
-  console.log(monster1);
+  const monster = chooseMonster(1, 1);
+
+  console.log(monster);
 
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {
