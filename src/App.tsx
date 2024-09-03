@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { chooseMonster } from './Func/Creatures/monster';
+import { playerChar } from './Func/Creatures/player';
 
 function App() {
   const dungeon = [
@@ -23,10 +24,13 @@ function App() {
   //const [test, setTest] = useState(dungeon);
   const test = dungeon;
   const [playerPos, setPlayerPos] = useState(initialPos);
+  const [stateTest, setStateTest] = useState(1);
 
   const monster = chooseMonster(1, 1);
+  const player = playerChar(stateTest, stateTest, 1, 1, 1, 1, 1);
 
-  console.log(monster);
+  //console.log(monster);
+  console.log(player);
 
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {
@@ -89,6 +93,13 @@ function App() {
           &rarr;
         </button>
       </div>
+
+      <button
+        className="button text"
+        onClick={() => setStateTest(stateTest + 1)}
+      >
+        +1;
+      </button>
     </main>
   );
 }

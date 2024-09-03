@@ -46,8 +46,6 @@ export const chooseMonster = (playerLvl: number, difficultyMod: number) => {
   }
 };
 
-//fazer um switch case que escolhe um monstro com base no resultado do index
-
 class Monster {
   constructor(_playerLvl: number, _difficultyMod: number) {
     this.str = Math.ceil((Math.random() * 2 + _playerLvl) * _difficultyMod);
