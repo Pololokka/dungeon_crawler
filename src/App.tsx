@@ -101,6 +101,7 @@ function App() {
           &rarr;
         </button>
       </div>
+
       <button
         className="button text"
         onClick={() => {
@@ -109,8 +110,17 @@ function App() {
       >
         +1 con;
       </button>
+
       <button className="button text" onClick={() => player.takeDmg(1)}>
         teste 1 de dano no player;
+      </button>
+
+      <button className="button text" onClick={() => player.passiveSkill()}>
+        passive skill;
+      </button>
+
+      <button className="button text" onClick={() => console.log(player)}>
+        console.log do player;
       </button>
     </main>
   );

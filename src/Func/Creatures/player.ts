@@ -41,6 +41,7 @@ class Player {
     this.agi = _agiBought;
     this.int = _intBought;
     this.per = _perBought;
+    this.isAlive = true;
     this.playerLvl = _playerLvl;
 
     this.maxHP = Math.ceil(this.con * 1.25) + 10 + this.playerLvl;
@@ -55,9 +56,25 @@ class Player {
   };
 
   takeDmg = (dmg: number) => {
-    this.curHP -= dmg;
-    console.log(this.name + ' recebeu ' + dmg + ' de dano!');
+    if (this.isAlive) {
+      this.curHP -= dmg;
+      console.log(`${this.name} recebeu ${dmg} de dano!`);
+      if (this.curHP <= 0) {
+        this.playerDeath();
+      }
+    } else {
+      console.log('o player está morto');
+    }
   };
+
+  playerDeath = () => {
+    this.isAlive = false;
+    console.log('o player está morto');
+  };
+
+  passiveSkill() {
+    console.log('essa é uma passive skill padrão');
+  }
 }
 
 class Barbarian extends Player {
@@ -81,12 +98,13 @@ class Barbarian extends Player {
       _perBought,
       _playerLvl,
     );
-
-    let bonusDmg = (100 - (100 * 5) / this.maxHP).toFixed(1);
-
     this.className = 'Bárbaro';
+  }
 
-    this.passiveSkill = bonusDmg;
+  passiveSkill() {
+    const bonusDmg = (100 - (100 * this.curHP) / this.maxHP).toFixed(1);
+    console.log(`O bonus é de ${bonusDmg}`);
+    return bonusDmg;
   }
 }
 
