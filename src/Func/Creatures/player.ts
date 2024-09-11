@@ -44,10 +44,20 @@ class Player {
     this.playerLvl = _playerLvl;
 
     this.maxHP = Math.ceil(this.con * 1.25) + 10 + this.playerLvl;
-    this.HP = this.maxHP;
-    this.maxMP = Math.ceil(this.int * 1.75) + 5 + this.playerLvl;
-    this.MP = this.maxMP;
+    this.curHP = this.maxHP;
+    this.maxMP = Math.ceil(this.int * 1.5) + 5 + this.playerLvl;
+    this.curMP = this.maxMP;
   }
+
+  increaseAtr = (atr: string, increment: number) => {
+    this[atr] += increment;
+    console.log(this[atr]);
+  };
+
+  takeDmg = (dmg: number) => {
+    this.curHP -= dmg;
+    console.log(this.name + ' recebeu ' + dmg + ' de dano!');
+  };
 }
 
 class Barbarian extends Player {
@@ -72,10 +82,11 @@ class Barbarian extends Player {
       _playerLvl,
     );
 
+    let bonusDmg = (100 - (100 * 5) / this.maxHP).toFixed(1);
+
     this.className = 'Bárbaro';
 
-    //placeholder. a habilidade passiva é outra
-    this.passiveSkill = this.str + 2;
+    this.passiveSkill = bonusDmg;
   }
 }
 

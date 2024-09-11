@@ -28,7 +28,7 @@ function App() {
 
   const monster = chooseMonster(1, 1);
   const player = playerChar(
-    'Mateiro',
+    'Bárbaro',
     'Astrash',
     stateTest,
     stateTest,
@@ -85,9 +85,7 @@ function App() {
           </div>
         );
       })}
-
       <p className="text">{playerPos}</p>
-
       <div className="divStyle">
         <button className="button text" onClick={() => movePlayer('x', -1)}>
           &uarr;
@@ -103,12 +101,16 @@ function App() {
           &rarr;
         </button>
       </div>
-
       <button
         className="button text"
-        onClick={() => setStateTest(stateTest + 1)}
+        onClick={() => {
+          player.increaseAtr('con', 1);
+        }}
       >
-        +1;
+        +1 con;
+      </button>
+      <button className="button text" onClick={() => player.takeDmg(1)}>
+        teste 1 de dano no player;
       </button>
     </main>
   );
