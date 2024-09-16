@@ -27,17 +27,8 @@ function App() {
   const [stateTest, setStateTest] = useState(1);
 
   const monster = chooseMonster(1, 1);
-  const player = playerChar(
-    'Bárbaro',
-    'Astrash',
-    stateTest,
-    stateTest,
-    1,
-    1,
-    1,
-    1,
-    1,
-  );
+
+  const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 1, 1, 1, 1);
 
   //console.log(monster);
   console.log(player);

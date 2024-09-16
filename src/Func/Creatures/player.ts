@@ -9,7 +9,6 @@ export const playerChar = (
   agi: number,
   int: number,
   per: number,
-  lvl: number,
 ) => {
   const possibleClasses = new Map([
     ['Bárbaro', Barbarian],
@@ -20,7 +19,7 @@ export const playerChar = (
   ]);
 
   const maker = possibleClasses.get(playerClass);
-  return new maker(name, str, con, dex, agi, int, per, lvl);
+  return new maker(name, str, con, dex, agi, int, per);
 };
 
 class Player {
@@ -42,7 +41,9 @@ class Player {
     this.int = _intBought;
     this.per = _perBought;
     this.isAlive = true;
-    this.playerLvl = _playerLvl;
+    this.playerLvl = 1;
+    this.curXP = 0;
+    this.toLvlUpXP = this.playerLvl * 100;
 
     this.maxHP = Math.ceil(this.con * 1.25) + 10 + this.playerLvl;
     this.curHP = this.maxHP;
@@ -76,6 +77,8 @@ class Player {
     console.log('essa é uma passive skill padrão');
   }
 }
+
+// ---- CLASSE ---- //
 
 class Barbarian extends Player {
   constructor(
