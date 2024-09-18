@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import { chooseMonster } from './Func/Creatures/monster';
-import { playerChar } from './Func/Creatures/player';
+import { chooseMonster } from './Func/Classes/monster';
+import { playerChar } from './Func/Classes/player';
+import { createWeapon } from './Func/Classes/weapons';
 
 function App() {
   const dungeon = [
@@ -28,10 +29,8 @@ function App() {
 
   const monster = chooseMonster(1, 1);
 
-  const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 1, 1, 1, 1);
-
-  //console.log(monster);
-  console.log(player);
+  const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 5, 1, 1, 1);
+  const weapon = createWeapon(6, 1, 1, 1, 1, 1, player, false);
 
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {
@@ -112,6 +111,17 @@ function App() {
 
       <button className="button text" onClick={() => console.log(player)}>
         console.log do player;
+      </button>
+
+      <button className="button text" onClick={() => console.log(weapon)}>
+        console.log da arma;
+      </button>
+
+      <button
+        className="button text"
+        onClick={() => console.log(weapon.dealDamage())}
+      >
+        console.log ataque da arma;
       </button>
     </main>
   );
