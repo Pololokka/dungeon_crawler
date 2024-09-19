@@ -52,7 +52,23 @@ class Weapon {
     this.playerDmgMod = _player.str;
   }
 
-  dealDamage(barbarianBonus?: number) {
+  attack() {
+    const d20 = Math.ceil(Math.random() * 20);
+    const isCrit = this.checkCrit(d20);
+
+    const toHit =
+      Math.ceil(Math.random() * 20) + this.hitMod + this.playerHitMod;
+
+    return { isCrit, toHit };
+  }
+
+  checkCrit(dieNumber: number) {
+    const critRange = 20 - this.critChanceMod;
+    let isCrit;
+    return dieNumber >= critRange ? (isCrit = true) : (isCrit = false);
+  }
+
+  damageCalc(barbarianBonus?: number) {
     const dmg =
       Math.ceil(Math.random() * this.dmgDie) + this.dmgMod + this.playerDmgMod;
     const barbarianDmg = dmg + dmg * barbarianBonus;

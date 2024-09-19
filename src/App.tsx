@@ -119,7 +119,14 @@ function App() {
 
       <button
         className="button text"
-        onClick={() => console.log(weapon.dealDamage())}
+        onClick={() => console.log(weapon.damageCalc())}
+      >
+        console.log dano da arma;
+      </button>
+
+      <button
+        className="button text"
+        onClick={() => console.log(weapon.attack())}
       >
         console.log ataque da arma;
       </button>
