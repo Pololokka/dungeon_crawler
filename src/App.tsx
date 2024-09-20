@@ -30,7 +30,7 @@ function App() {
   const monster = chooseMonster(1, 1);
 
   const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 5, 1, 1, 1);
-  const weapon = createWeapon(6, 1, 1, 1, 1, 1, player, false);
+  const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
 
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {
@@ -61,6 +61,22 @@ function App() {
       ) {
         setPlayerPos([playerPos[0], playerPos[1] + direction]);
       }
+    }
+  };
+
+  const attackPlayer = () => {
+    const playerAttack = weapon.attack();
+
+    if (playerAttack.isCrit) {
+      console.log(
+        `Acerto crítico! Jogador ataca e causa ${weapon.dealDamage(playerAttack.isCrit)} de dano`,
+      );
+    } else if (playerAttack.toHit >= 17) {
+      console.log(
+        `Jogador ataca e causa ${weapon.dealDamage(playerAttack.isCrit)} de dano`,
+      );
+    } else {
+      console.log(`Jogador erra...`);
     }
   };
 
@@ -119,7 +135,7 @@ function App() {
 
       <button
         className="button text"
-        onClick={() => console.log(weapon.damageCalc())}
+        onClick={() => console.log(weapon.dealDamage(false))}
       >
         console.log dano da arma;
       </button>
@@ -129,6 +145,10 @@ function App() {
         onClick={() => console.log(weapon.attack())}
       >
         console.log ataque da arma;
+      </button>
+
+      <button className="button text" onClick={() => attackPlayer()}>
+        console.log ataque e dano;
       </button>
     </main>
   );

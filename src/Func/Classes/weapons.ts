@@ -68,11 +68,24 @@ class Weapon {
     return dieNumber >= critRange ? (isCrit = true) : (isCrit = false);
   }
 
-  damageCalc(barbarianBonus?: number) {
+  damageCalc() {
     const dmg =
       Math.ceil(Math.random() * this.dmgDie) + this.dmgMod + this.playerDmgMod;
-    const barbarianDmg = dmg + dmg * barbarianBonus;
 
-    return barbarianBonus ? barbarianDmg : dmg;
+    return dmg;
+  }
+
+  dealDamage(isCrit: boolean, barbarianBonus?: number) {
+    let dmg = this.damageCalc();
+
+    if (barbarianBonus) {
+      dmg += dmg * barbarianBonus;
+    }
+
+    if (isCrit) {
+      dmg = dmg * this.critDmgMod;
+    }
+
+    return dmg;
   }
 }
