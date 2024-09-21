@@ -30,7 +30,8 @@ function App() {
   const monster = chooseMonster(1, 1);
 
   const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 5, 1, 1, 1);
-  const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
+  //const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
+  const weapon = createWeapon(player, false);
 
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {

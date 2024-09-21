@@ -1,14 +1,6 @@
-export const createWeapon = (
-  dmgDie: number,
-  dmgMod: number,
-  hitMod: number,
-  critChanceMod: number,
-  critDmgMod: number,
+//@ts-nocheck
 
-  doubleAtkMod: number,
-  player: any,
-  isMagical: boolean,
-) => {
+export const createWeapon = (player: any, isMagical: boolean) => {
   // const possibleClasses = new Map([
   //   ['Bárbaro', Barbarian],
   //   ['Guerreiro', Fighter],
@@ -18,36 +10,11 @@ export const createWeapon = (
   // ]);
 
   // const maker = possibleClasses.get(playerClass);
-  return new Weapon(
-    dmgDie,
-    dmgMod,
-    hitMod,
-    critChanceMod,
-    critDmgMod,
-    doubleAtkMod,
-    player,
-    isMagical,
-  );
+  return new Sword(player, isMagical);
 };
 
 class Weapon {
-  constructor(
-    _dmgDie: number,
-    _dmgMod: number,
-    _hitMod: number,
-    _critChanceMod: number,
-    _critDmgMod: number,
-    _doubleAtkMod: number,
-    _player: any,
-    _isMagical: boolean,
-  ) {
-    this.dmgDie = _dmgDie;
-    this.dmgMod = _dmgMod;
-    this.hitMod = _hitMod;
-    this.critChanceMod = _critChanceMod;
-    this.critDmgMod = _critDmgMod;
-    this.doubleAtkMod = _doubleAtkMod;
-    this.isMagical = _isMagical;
+  constructor(_player: any, _isMagical: boolean) {
     this.playerHitMod = _player.dex;
     this.playerDmgMod = _player.str;
   }
@@ -87,5 +54,37 @@ class Weapon {
     }
 
     return dmg;
+  }
+}
+
+class Sword extends Weapon {
+  constructor(_player: any, _isMagical: boolean) {
+    super(_player, _isMagical);
+
+    this.dmgDie = 8;
+    this.dmgMod = 2;
+    this.hitMod = 0;
+    this.critChanceMod = 1;
+    this.critDmgMod = 2;
+    this.doubleAtkMod = 1;
+    this.isMagical = _isMagical;
+    this.weaponName = 'Espada';
+  }
+}
+
+// ---- RANGED ---- //
+
+class Ranged extends Weapon {
+  constructor(_player: any, _isMagical: boolean) {
+    super(_player, _isMagical);
+
+    this.counterAttackChance = 8;
+  }
+
+  enemyCounterAttack() {
+    const d20 = Math.ceil(Math.random() * 20);
+    const counterAttackRange = 20 - this.counterAttackChance;
+
+    return d20 >= counterAttackRange ? true : false;
   }
 }
