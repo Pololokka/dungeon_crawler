@@ -40,6 +40,7 @@ class Player {
     this.agi = _agiBought;
     this.int = _intBought;
     this.per = _perBought;
+    this.spellcastingScore = _intBought;
     this.isAlive = true;
     this.playerLvl = 1;
     this.curXP = 0;

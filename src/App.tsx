@@ -33,6 +33,14 @@ function App() {
   //const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
   const weapon = createWeapon(player, false);
 
+  const testeDeRanged = () => {
+    if (weapon.isRanged) {
+      console.log(weapon.enemyCounterAttack());
+    }
+  };
+
+  testeDeRanged();
+
   // const makeDungeon = (dungeon: number[][]) => {
   //   dungeon.map((row) => {
   //     row.map((item) => {

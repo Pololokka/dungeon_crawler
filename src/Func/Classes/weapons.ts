@@ -10,13 +10,14 @@ export const createWeapon = (player: any, isMagical: boolean) => {
   // ]);
 
   // const maker = possibleClasses.get(playerClass);
-  return new Sword(player, isMagical);
+  return new Ranged(player, isMagical);
 };
+
+// ---- MELEE ---- //
 
 class Weapon {
   constructor(_player: any, _isMagical: boolean) {
-    this.playerHitMod = _player.dex;
-    this.playerDmgMod = _player.str;
+    this.isRanged = false;
   }
 
   attack() {
@@ -57,9 +58,14 @@ class Weapon {
   }
 }
 
+// ---- MELEE WEAPONS ---- //
+
 class Sword extends Weapon {
   constructor(_player: any, _isMagical: boolean) {
     super(_player, _isMagical);
+
+    this.playerHitMod = _player.str;
+    this.playerDmgMod = _player.str;
 
     this.dmgDie = 8;
     this.dmgMod = 2;
@@ -78,6 +84,7 @@ class Ranged extends Weapon {
   constructor(_player: any, _isMagical: boolean) {
     super(_player, _isMagical);
 
+    this.isRanged = true;
     this.counterAttackChance = 8;
   }
 
@@ -86,5 +93,58 @@ class Ranged extends Weapon {
     const counterAttackRange = 20 - this.counterAttackChance;
 
     return d20 >= counterAttackRange ? true : false;
+  }
+}
+
+// ---- SPELLS ---- //
+
+class Spells extends Ranged {
+  constructor(_player: any, _enemy: any) {
+    super(_player);
+
+    this.isRanged = false;
+  }
+
+  checkMp() {
+    return mpCost <= _player.curMP ? true : false;
+  }
+
+  checkSpellLvl(castingLvl: number) {
+    return castingLvl <= _player._playerLvl ? true : false;
+  }
+}
+
+class OffensiveSpells extends Spells {
+  constructor(_player: any) {
+    super(_player, _enemy);
+
+    this.isAttack = true;
+    this.enemyScore = _enemy.dex;
+    this.spellDamageDie = 6;
+  }
+
+  spellAttackRoll(castingLvl: number) {
+    const d20 = Math.ceil(Math.random() * 20);
+
+    const toHit =
+      Math.ceil(Math.random() * 20) + _player._playerLvl + castingLvl;
+
+    return toHit;
+  }
+
+  spellSavingThrow() {
+    const d20 = Math.ceil(Math.random() * 20);
+    const playerDC = 10 + _player.playerLvl + _player.spellcastingScore;
+
+    return d20 + 10 + this.enemyScore >= playerDC ? true : false;
+  }
+
+  spellDamage() {
+    const dmg =
+      Math.ceil(Math.random() * this.spellDamageDie) +
+      _player.playerLvl +
+      _player.spellcastingScore;
+
+    return dmg;
   }
 }
