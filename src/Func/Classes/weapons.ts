@@ -104,23 +104,25 @@ class Spells extends Ranged {
     super(_player);
 
     this.isRanged = false;
+    this.curMP = _player.curMP;
+    this.playerLvl = _player.playerLvl;
+    this.playerSpellcasting = _player.spellcastingScore;
   }
 
   checkMp() {
-    return mpCost <= _player.curMP ? true : false;
+    return mpCost <= this.curMP ? true : false;
   }
 
   checkSpellLvl(castingLvl: number) {
-    return castingLvl <= _player._playerLvl ? true : false;
+    return castingLvl <= this.playerLvl ? true : false;
   }
 }
 
 class OffensiveSpells extends Spells {
   constructor(_player: any) {
-    super(_player, _enemy);
+    super(_player);
 
     this.isAttack = true;
-    this.enemyScore = _enemy.dex;
     this.spellDamageDie = 6;
   }
 
@@ -128,23 +130,23 @@ class OffensiveSpells extends Spells {
     const d20 = Math.ceil(Math.random() * 20);
 
     const toHit =
-      Math.ceil(Math.random() * 20) + _player._playerLvl + castingLvl;
+      Math.ceil(Math.random() * 20) + this.playerSpellcasting + castingLvl;
 
     return toHit;
   }
 
-  spellSavingThrow() {
+  spellSavingThrow(enemyScore: number) {
     const d20 = Math.ceil(Math.random() * 20);
-    const playerDC = 10 + _player.playerLvl + _player.spellcastingScore;
+    const playerDC = 10 + this.playerLvl + this.playerSpellcasting;
 
-    return d20 + 10 + this.enemyScore >= playerDC ? true : false;
+    return d20 + 10 + enemyScore >= playerDC ? true : false;
   }
 
   spellDamage() {
     const dmg =
       Math.ceil(Math.random() * this.spellDamageDie) +
-      _player.playerLvl +
-      _player.spellcastingScore;
+      this.playerLvl +
+      this.playerSpellcasting;
 
     return dmg;
   }
@@ -161,8 +163,8 @@ class SuportSpells extends Spells {
   spellSupValue() {
     const supValue =
       Math.ceil(Math.random() * this.spellSupportDie) +
-      _player.playerLvl +
-      _player.spellcastingScore;
+      this.playerLvl +
+      this.playerSpellcasting;
 
     return supValue;
   }
@@ -176,6 +178,6 @@ class Heal extends SuportSpells {
   changeAtribute() {
     const valueToAdd = this.spellSupValue;
 
-    _player.curHP += valueToAdd;
+    player.curHP += valueToAdd;
   }
 }

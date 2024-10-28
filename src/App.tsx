@@ -90,7 +90,7 @@ function App() {
   };
 
   const supportSpell = () => {
-    weapon.spellSupValue();
+    //weapon.spellSupValue();
     console.log(weapon.spellSupValue());
   };
 
