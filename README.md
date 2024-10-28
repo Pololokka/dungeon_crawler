@@ -31,7 +31,7 @@ Página única(até o momento) onde o usuário realiza todas as interações(bat
 - [ ] Criação de consumíveis
 - [ ] Sistema de experiência e level up
 - [ ] Bosses
-- [ ] Morte do player
+- [x] Morte do player
 
 ## Futuro
 
