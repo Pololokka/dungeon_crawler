@@ -1,30 +1,70 @@
-# React + TypeScript + Vite
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![technology - React](https://img.shields.io/badge/React-orange) ![technology - JS](https://img.shields.io/badge/JavaScript-yellow) ![technology - TS](https://img.shields.io/badge/Typescript-blue)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Dungeon Crawler
 
-Currently, two official plugins are available:
+Site de um jogo dungeon crawler. Feito primariamente para estudar Array 2D, e classes de JS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias
 
-## Expanding the ESLint configuration
+- React
+- JavaScript
+- Typescript
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Escopo do projeto
 
-- Configure the top-level `parserOptions` property like this:
+### Página principal
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Página única(até o momento) onde o usuário realiza todas as interações(batalhas, equipa itens, usa magias, e etc)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Roadmap
+
+- [x] Navegação em dungeon
+- [x] Criação de Monstros
+- [ ] Criação de Personagem
+- [ ] Classes de Personagem(quase tudo está feito, falta somente fazer as passivas de cada classe)
+- [x] Criação de Armas Melee
+- [x] Criação de Armas Ranged
+- [ ] Criação de Spells
+- [ ] Sistema para equipar itens
+- [ ] Criação de Armaduras
+- [ ] Criação de um sistema de batalha
+- [ ] Criação de consumíveis
+- [ ] Sistema de experiência e level up
+- [ ] Bosses
+- [ ] Morte do player
+
+## Futuro
+
+- [ ] Sistema de criação procedural de dungeon
+- [ ] Introduzir overworld
+- [ ] Introduzir cidade(s)
+- [ ] Introduzir viagens
+- [ ] Introduzir economia
+- [ ] Introduzir missões simples
+- [ ] Introduzir uma quest principal
+
+## Licença
+
+Feito com a licença MIT
+
+MIT License
+
+Copyright (c) 2023 Vitor Bulbovas
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
