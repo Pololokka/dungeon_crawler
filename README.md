@@ -16,6 +16,15 @@ Site de um jogo dungeon crawler. Feito primariamente para estudar Array 2D, e cl
 
 Página única(até o momento) onde o usuário realiza todas as interações(batalhas, equipa itens, usa magias, e etc)
 
+## Sendo feito no momento
+
+- Spells
+
+- [x] Base de todo Spell
+- [x] Base de Spell Ofensivo
+- [ ] Base de Spell Suporte
+- [ ] Spell list
+
 ## Roadmap
 
 - [x] Navegação em dungeon
@@ -35,6 +44,8 @@ Página única(até o momento) onde o usuário realiza todas as interações(bat
 
 ## Futuro
 
+- [ ] Visualização gráfica da dungeon
+- [ ] Sistema de iluminação
 - [ ] Sistema de criação procedural de dungeon
 - [ ] Introduzir overworld
 - [ ] Introduzir cidade(s)

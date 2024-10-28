@@ -10,7 +10,7 @@ export const createWeapon = (player: any, isMagical: boolean) => {
   // ]);
 
   // const maker = possibleClasses.get(playerClass);
-  return new Ranged(player, isMagical);
+  return new SuportSpells(player, isMagical);
 };
 
 // ---- MELEE ---- //
@@ -86,6 +86,7 @@ class Ranged extends Weapon {
 
     this.isRanged = true;
     this.counterAttackChance = 8;
+    this.playerHitMod = _player.dex;
   }
 
   enemyCounterAttack() {
@@ -99,7 +100,7 @@ class Ranged extends Weapon {
 // ---- SPELLS ---- //
 
 class Spells extends Ranged {
-  constructor(_player: any, _enemy: any) {
+  constructor(_player: any) {
     super(_player);
 
     this.isRanged = false;
@@ -146,5 +147,35 @@ class OffensiveSpells extends Spells {
       _player.spellcastingScore;
 
     return dmg;
+  }
+}
+
+class SuportSpells extends Spells {
+  constructor(_player: any) {
+    super(_player);
+
+    this.isAttack = false;
+    this.spellSupportDie = 6;
+  }
+
+  spellSupValue() {
+    const supValue =
+      Math.ceil(Math.random() * this.spellSupportDie) +
+      _player.playerLvl +
+      _player.spellcastingScore;
+
+    return supValue;
+  }
+}
+
+class Heal extends SuportSpells {
+  constructor(_player: any) {
+    super(_player);
+  }
+
+  changeAtribute() {
+    const valueToAdd = this.spellSupValue;
+
+    _player.curHP += valueToAdd;
   }
 }

@@ -89,6 +89,11 @@ function App() {
     }
   };
 
+  const supportSpell = () => {
+    weapon.spellSupValue();
+    console.log(weapon.spellSupValue());
+  };
+
   return (
     <main className="mainStyles">
       {test.map((row) => {
@@ -156,7 +161,7 @@ function App() {
         console.log ataque da arma;
       </button>
 
-      <button className="button text" onClick={() => attackPlayer()}>
+      <button className="button text" onClick={() => supportSpell()}>
         console.log ataque e dano;
       </button>
     </main>
