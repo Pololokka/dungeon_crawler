@@ -44,9 +44,11 @@ html {
   grid-template-rows: auto;
   grid-template-areas:
     'equip view view view player'
-    'equip view view view player'
-    'equip view view view player'
-    'equip action action action player';
+    'equip action action action player'
+    'equip log log log player';
+
+  width: 100vw;
+  height: 100vh;
 }
 
 /* caixa lateral(esquerda) */
@@ -61,7 +63,10 @@ html {
 .viewBox {
   grid-area: view;
   background-color: yellow;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* caixa lateral(direita) */
@@ -76,6 +81,11 @@ html {
 .actionBox {
   grid-area: action;
   background-color: pink;
+}
+
+.logBox {
+  grid-area: log;
+  background-color: yellow;
 }
 
 .rowStyles {

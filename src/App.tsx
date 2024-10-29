@@ -100,7 +100,15 @@ function App() {
       </div>
 
       <div className="viewBox">
-        <p className="text">teste 2</p>
+        {test.map((row) => {
+          return (
+            <div className="rowStyles">
+              {row.map((item) => {
+                return <p className="text">{item == 1 ? 'X' : 'Z'}</p>;
+              })}
+            </div>
+          );
+        })}
       </div>
 
       <div className="charBox">
@@ -109,6 +117,10 @@ function App() {
 
       <div className="actionBox">
         <p className="text">teste 4</p>
+      </div>
+
+      <div className="logBox">
+        <p className="text">teste 5</p>
       </div>
 
       {/* {test.map((row) => {
