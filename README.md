@@ -22,7 +22,7 @@ Página única(até o momento) onde o usuário realiza todas as interações(bat
 
 - [x] Base de todo Spell
 - [x] Base de Spell Ofensivo
-- [ ] Base de Spell Suporte
+- [x] Base de Spell Suporte
 - [ ] Spell list
 
 ## Roadmap
@@ -34,6 +34,9 @@ Página única(até o momento) onde o usuário realiza todas as interações(bat
 - [x] Criação de Armas Melee
 - [x] Criação de Armas Ranged
 - [ ] Criação de Spells
+- [ ] Acesso de equips pra cada classe
+- [ ] Lista de Spells que cada classe possui acesso
+- [ ] Habilidade com armas(?)
 - [ ] Sistema para equipar itens
 - [ ] Criação de Armaduras
 - [ ] Criação de um sistema de batalha
@@ -41,6 +44,7 @@ Página única(até o momento) onde o usuário realiza todas as interações(bat
 - [ ] Sistema de experiência e level up
 - [ ] Bosses
 - [x] Morte do player
+- [ ] Interface gráfica
 
 ## Futuro
 

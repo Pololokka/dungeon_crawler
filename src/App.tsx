@@ -90,13 +90,28 @@ function App() {
   };
 
   const supportSpell = () => {
-    //weapon.spellSupValue();
-    console.log(weapon.spellSupValue());
+    weapon.heal(player);
   };
 
   return (
     <main className="mainStyles">
-      {test.map((row) => {
+      <div className="equipBox">
+        <p className="text">teste</p>
+      </div>
+
+      <div className="viewBox">
+        <p className="text">teste 2</p>
+      </div>
+
+      <div className="charBox">
+        <p className="text">teste 3</p>
+      </div>
+
+      <div className="actionBox">
+        <p className="text">teste 4</p>
+      </div>
+
+      {/* {test.map((row) => {
         return (
           <div className="rowStyles">
             {row.map((item) => {
@@ -163,7 +178,7 @@ function App() {
 
       <button className="button text" onClick={() => supportSpell()}>
         console.log ataque e dano;
-      </button>
+      </button> */}
     </main>
   );
 }

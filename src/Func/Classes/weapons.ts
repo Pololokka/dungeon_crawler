@@ -10,7 +10,7 @@ export const createWeapon = (player: any, isMagical: boolean) => {
   // ]);
 
   // const maker = possibleClasses.get(playerClass);
-  return new SuportSpells(player, isMagical);
+  return new Heal(player, isMagical);
 };
 
 // ---- MELEE ---- //
@@ -175,9 +175,12 @@ class Heal extends SuportSpells {
     super(_player);
   }
 
-  changeAtribute() {
-    const valueToAdd = this.spellSupValue;
+  heal(player) {
+    const valueToAdd = this.spellSupValue();
 
     player.curHP += valueToAdd;
+    if (player.curHP > player.maxHP) {
+      player.curHP = player.maxHP;
+    }
   }
 }

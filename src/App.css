@@ -30,12 +30,52 @@ html {
   background-color: var(--cor-fundo);
 }
 
-.mainStyles {
+/* .mainStyles {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 4em 0;
+} */
+
+.mainStyles {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'equip view view view player'
+    'equip view view view player'
+    'equip view view view player'
+    'equip action action action player';
+}
+
+/* caixa lateral(esquerda) */
+
+.equipBox {
+  grid-area: equip;
+  background-color: red;
+}
+
+/* caixa central */
+
+.viewBox {
+  grid-area: view;
+  background-color: yellow;
+  height: 100%;
+}
+
+/* caixa lateral(direita) */
+
+.charBox {
+  grid-area: player;
+  background-color: green;
+}
+
+/* caixa central(baixo) */
+
+.actionBox {
+  grid-area: action;
+  background-color: pink;
 }
 
 .rowStyles {
