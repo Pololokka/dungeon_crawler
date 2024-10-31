@@ -2,18 +2,20 @@ import { useState } from 'react';
 
 type BarProps = {
   player: any;
+  damage: number;
 };
 
 export const Bar = (props: BarProps) => {
+  const [playerLife, setPlayerLife] = useState(props.player.curHP);
   const [playerPercent, setPlayerPercent] = useState(100);
-  const [playerValue, setPlayerValue] = useState(props.player.curHP);
 
   const playerLifeCalc = () => {
-    props.player.takeDmg(1);
-    setPlayerValue(props.player.curHP);
+    props.player.takeDmg(props.damage);
+    setPlayerLife(props.player.curHP);
     setPlayerPercent(
       ((100 * props.player.curHP) / props.player.maxHP).toFixed(1),
     );
+    console.log(playerPercent);
   };
 
   return (
@@ -25,7 +27,7 @@ export const Bar = (props: BarProps) => {
             height: `${playerPercent}%`,
           }}
         >
-          {playerValue}
+          {playerLife}
         </div>
       </div>
       <button onClick={playerLifeCalc}>dano</button>

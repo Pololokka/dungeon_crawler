@@ -25,16 +25,19 @@ function App() {
 
   const player = playerChar('Bárbaro', 'Astrash', 1, 1, 5, 1, 1, 1);
   //const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
-  const weapon = createWeapon(player, false);
-  console.log(player);
 
   //const [test, setTest] = useState(dungeon);
   const test = dungeon;
+  // const [player, setPlayer] = useState(
+  //   playerChar('Bárbaro', 'Astrash', 1, 1, 5, 1, 1, 1),
+  // );
   const [playerPos, setPlayerPos] = useState(initialPos);
   const [playerLifePercent, setPlayerLifePercent] = useState(100);
   const [playerLife, setPlayerLife] = useState(player.curHP);
 
   const monster = chooseMonster(1, 1);
+  const weapon = createWeapon(player, false);
+  console.log(player);
 
   const testeDeRanged = () => {
     if (weapon.isRanged) {
@@ -116,7 +119,8 @@ function App() {
 
       <div className="charBox">
         <p className="text">teste 3</p>
-        <Bar player={player} />
+        <Bar player={player} damage={1} />
+        {/* <button onClick={() => player.takeDmg(1)}>dano</button> */}
       </div>
 
       <div className="actionBox">
