@@ -3,6 +3,7 @@ import './App.css';
 import { chooseMonster } from './Func/Classes/monster';
 import { playerChar } from './Func/Classes/player';
 import { createWeapon } from './Func/Classes/weapons';
+import { Bar } from './Components/Bar';
 
 function App() {
   const dungeon = [
@@ -22,16 +23,18 @@ function App() {
 
   const initialPos = [0, 3];
 
+  const player = playerChar('Bárbaro', 'Astrash', 1, 1, 5, 1, 1, 1);
+  //const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
+  const weapon = createWeapon(player, false);
+  console.log(player);
+
   //const [test, setTest] = useState(dungeon);
   const test = dungeon;
   const [playerPos, setPlayerPos] = useState(initialPos);
-  const [stateTest, setStateTest] = useState(1);
+  const [playerLifePercent, setPlayerLifePercent] = useState(100);
+  const [playerLife, setPlayerLife] = useState(player.curHP);
 
   const monster = chooseMonster(1, 1);
-
-  const player = playerChar('Bárbaro', 'Astrash', stateTest, 1, 5, 1, 1, 1);
-  //const weapon = createWeapon(6, 1, 1, 1, 10, 1, player, false);
-  const weapon = createWeapon(player, false);
 
   const testeDeRanged = () => {
     if (weapon.isRanged) {
@@ -113,6 +116,7 @@ function App() {
 
       <div className="charBox">
         <p className="text">teste 3</p>
+        <Bar player={player} />
       </div>
 
       <div className="actionBox">
